@@ -55,8 +55,17 @@ def cargar_sesiones() -> dict[str, str]:
 
 
 def guardar_sesiones() -> None:
-    """Escribe la libreta en el disco: así no se pierde al reiniciar."""
-    ARCHIVO_SESIONES.write_text(json.dumps(sesiones), encoding="utf-8")
+    """
+    Escribe la libreta en el disco: así no se pierde al reiniciar.
+
+    En la nube (Vercel) el sistema de archivos es de SOLO LECTURA:
+    si la escritura falla, seguimos con la libreta solo en memoria
+    (las sesiones durarán lo que viva la función desplegada).
+    """
+    try:
+        ARCHIVO_SESIONES.write_text(json.dumps(sesiones), encoding="utf-8")
+    except OSError:
+        pass  # disco de solo lectura: la app sigue funcionando igual
 
 
 # Al arrancar, la libreta en memoria se llena leyendo el archivo.

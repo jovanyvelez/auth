@@ -11,3 +11,6 @@ wheels/
 
 # Datos de la app (la "libreta" se crea sola con el primer login)
 sesiones.json
+
+# Config local de Vercel CLI (se crea con "vercel"; no se sube)
+.vercel

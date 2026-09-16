@@ -45,6 +45,23 @@ GUIA_ESTUDIANTE.md → guía para seguir el proyecto paso a paso
 GUIA_PROFESOR.md   → guía didáctica para el aula
 ```
 
+## Despliegue en Vercel (opcional)
+
+La web puede verse en internet con configuración casi cero: `main.py`
+con la `app` es un punto de entrada que Vercel reconoce solo.
+
+1. En [vercel.com](https://vercel.com) → *Add New → Project* → importa
+   el repo de GitHub.
+2. Vercel detecta FastAPI, instala `requirements.txt` y usa el Python de
+   `.python-version` (3.14). No hay nada más que configurar.
+
+Roles de los archivos: `requirements.txt` = dependencias para la nube;
+`vercel.json` = excluye del despliegue `.venv` y datos locales.
+
+> ⚠️ En Vercel el disco es de solo lectura: las sesiones viven solo en
+> la memoria de la función. Si la función «se enfría» (*cold start*),
+> hay que repetir el login. En local sí se guardan en `sesiones.json`.
+
 ## Documentación
 
 - **Diagrama:** `diagrama-login.svg` — el flujo del login en 7 pasos (los

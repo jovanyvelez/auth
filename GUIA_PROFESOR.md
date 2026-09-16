@@ -174,4 +174,7 @@ rápida: borrar el archivo y comprobar que hay que repetir login.
 2. Base de datos real (SQLite + SQLModel) en lugar de diccionarios.
 3. Registro de usuarios nuevos (form de alta) y validación de datos.
 4. Cookies firmadas (`itsdangerous`) o JWT, y comparar las dos.
-5. Despliegue: qué cambia (`fastapi run`, HTTPS, variables de entorno).
+5. Despliegue en Vercel (ya preparado: `vercel.json` + `requirements.txt`):
+   charla sobre lo que cambia en serverless — disco de solo lectura
+   (las sesiones quedan solo en memoria), funciones frías — y por qué
+   en la nube se usan almacenes externos (BD, Redis) para las sesiones.

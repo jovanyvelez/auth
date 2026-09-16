@@ -14,6 +14,7 @@ Zonas de la web:
   y esa dependencia (seguridad.py) redirige al login si no hay sesión.
 """
 
+from pathlib import Path
 from typing import Annotated
 
 from fastapi import APIRouter, Form, Request
@@ -31,7 +32,9 @@ from seguridad import (
 from usuarios import items_db
 
 # Jinja2 busca las plantillas HTML dentro de la carpeta "templates".
-templates = Jinja2Templates(directory="templates")
+# Ruta ABSOLUTA (relativa a este archivo): funciona igual en local y en
+# la nube (Vercel), aunque la app no arranque desde la carpeta raíz.
+templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 
 # Un router es un "paquete de rutas" que main.py incluirá en la app.
 router = APIRouter()
