@@ -1,0 +1,35 @@
+{#
+  login.html — el formulario de login. Es la ÚNICA página pública.
+  Extiende a base.html, pero como no hay usuario conectado, el menú no aparece.
+#}
+{% extends "base.html" %}
+
+{% block titulo %}Iniciar sesión{% endblock %}
+
+{% block contenido %}
+<h1>Iniciar sesión</h1>
+
+{# Si la ruta nos pasa una variable `error`, la mostramos en rojo.
+   Eso ocurre cuando el usuario/contraseña no son correctos. #}
+{% if error %}
+<p class="error">{{ error }}</p>
+{% endif %}
+
+{# PASO 1 (ver diagrama-login.svg): el formulario envía usuario y contraseña.
+   method="post" -> envía los datos; action="/login" -> a la ruta POST /login.
+   Por eso en rutas.py hay DOS funciones con la misma dirección /login:
+   una para GET (mostrar) y otra para POST (procesar). #}
+<form method="post" action="/login" class="tarjeta">
+    <p>
+        <label for="username">Usuario</label><br>
+        <input type="text" id="username" name="username" required>
+    </p>
+    <p>
+        <label for="password">Contraseña</label><br>
+        <input type="password" id="password" name="password" required>
+    </p>
+    <button type="submit">Entrar</button>
+</form>
+
+<p>Usuarios de prueba: <strong>ana / 1234</strong> y <strong>luis / abcd</strong></p>
+{% endblock %}

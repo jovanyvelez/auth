@@ -1,0 +1,20 @@
+{#
+  home.html — la página de bienvenida. Privada: solo con sesión.
+  El menú hacia "Mi perfil" y "Mis objetos" está en base.html.
+#}
+{% extends "base.html" %}
+
+{% block titulo %}Inicio{% endblock %}
+
+{% block contenido %}
+<h1>Bienvenido, {{ usuario.nombre_completo }}</h1>
+
+<div class="tarjeta">
+    <p>Has iniciado sesión correctamente. 🎉</p>
+    <p>Usa el menú de arriba para navegar:</p>
+    <ul>
+        <li><a href="/perfil">Mi perfil</a> — tus datos personales.</li>
+        <li><a href="/objetos">Mis objetos</a> — la lista de tus objetos.</li>
+    </ul>
+</div>
+{% endblock %}

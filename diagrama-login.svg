@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="840" viewBox="0 0 760 840" font-family="system-ui, sans-serif">
+<defs><marker id="flecha" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#8a97a8"/></marker></defs>
+<rect width="760" height="840" fill="#ffffff"/>
+<text x="380" y="38" text-anchor="middle" font-size="20" font-weight="700" fill="#25384d">¿Cómo funciona el login con sesiones?</text>
+<text x="380" y="58" text-anchor="middle" font-size="12" fill="#7a8ba0">auth_example1 · FastAPI + Jinja2 · Los mismos números «PASO n» que en los comentarios del código</text>
+<rect x="20" y="86" width="720" height="64" rx="12" fill="#eef4fb" stroke="#cfe0f2"/>
+<circle cx="52" cy="118" r="18" fill="#4a90d9"/>
+<text x="52" y="124" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">1</text>
+<text x="84" y="114" font-size="14" font-weight="700" fill="#25384d">Escribes tu usuario y contraseña y pulsas «Entrar»</text>
+<text x="84" y="135" font-size="12" fill="#5c6f86">El formulario de login.html envía POST /login con username y password</text>
+<rect x="576" y="106" width="140" height="24" rx="12" fill="#4a90d9"/>
+<text x="646" y="122" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">NAVEGADOR</text>
+<line x1="52" y1="155" x2="52" y2="179" stroke="#8a97a8" stroke-width="2" marker-end="url(#flecha)"/>
+<rect x="20" y="184" width="720" height="64" rx="12" fill="#edf9f2" stroke="#cdeadd"/>
+<circle cx="52" cy="216" r="18" fill="#2eaa6e"/>
+<text x="52" y="222" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">2</text>
+<text x="84" y="212" font-size="14" font-weight="700" fill="#25384d">comprobar_login(): ¿existe? ¿la contraseña coincide?</text>
+<text x="84" y="233" font-size="12" fill="#5c6f86">Consulta usuarios_db (usuarios.py) · comparación simple, sin hashes</text>
+<rect x="576" y="204" width="140" height="24" rx="12" fill="#2eaa6e"/>
+<text x="646" y="220" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">SERVIDOR</text>
+<line x1="52" y1="253" x2="52" y2="277" stroke="#8a97a8" stroke-width="2" marker-end="url(#flecha)"/>
+<rect x="20" y="282" width="720" height="64" rx="12" fill="#edf9f2" stroke="#cdeadd"/>
+<circle cx="52" cy="314" r="18" fill="#2eaa6e"/>
+<text x="52" y="320" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">3</text>
+<text x="84" y="310" font-size="14" font-weight="700" fill="#25384d">crear_sesion(): el token queda apuntado en la libreta</text>
+<text x="84" y="331" font-size="12" fill="#5c6f86">La libreta es el diccionario sesiones: sesiones[token] = "ana"</text>
+<rect x="576" y="302" width="140" height="24" rx="12" fill="#2eaa6e"/>
+<text x="646" y="318" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">SERVIDOR</text>
+<line x1="52" y1="351" x2="52" y2="375" stroke="#8a97a8" stroke-width="2" marker-end="url(#flecha)"/>
+<rect x="20" y="380" width="720" height="64" rx="12" fill="#f3f0fb" stroke="#ddd3f2"/>
+<circle cx="52" cy="412" r="18" fill="#7a5fd0"/>
+<text x="52" y="418" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">4</text>
+<text x="84" y="408" font-size="14" font-weight="700" fill="#25384d">El servidor contesta: «ve a la home» y entrega la cookie</text>
+<text x="84" y="429" font-size="12" fill="#5c6f86">RedirectResponse(303) a «/» + set_cookie(sesion, token) — rutas.py</text>
+<rect x="576" y="400" width="140" height="24" rx="12" fill="#7a5fd0"/>
+<text x="646" y="416" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">AMBOS</text>
+<line x1="52" y1="449" x2="52" y2="473" stroke="#8a97a8" stroke-width="2" marker-end="url(#flecha)"/>
+<rect x="20" y="478" width="720" height="64" rx="12" fill="#eef4fb" stroke="#cfe0f2"/>
+<circle cx="52" cy="510" r="18" fill="#4a90d9"/>
+<text x="52" y="516" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">5</text>
+<text x="84" y="506" font-size="14" font-weight="700" fill="#25384d">El navegador guarda la cookie y la pega en cada petición</text>
+<text x="84" y="527" font-size="12" fill="#5c6f86">A partir de aquí todo viaja acompañado: Cookie: sesion=token</text>
+<rect x="576" y="498" width="140" height="24" rx="12" fill="#4a90d9"/>
+<text x="646" y="514" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">NAVEGADOR</text>
+<line x1="52" y1="547" x2="52" y2="571" stroke="#8a97a8" stroke-width="2" marker-end="url(#flecha)"/>
+<rect x="20" y="576" width="720" height="64" rx="12" fill="#edf9f2" stroke="#cdeadd"/>
+<circle cx="52" cy="608" r="18" fill="#2eaa6e"/>
+<text x="52" y="614" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">6</text>
+<text x="84" y="604" font-size="14" font-weight="700" fill="#25384d">get_current_user() lee la cookie y mira la libreta</text>
+<text x="84" y="625" font-size="12" fill="#5c6f86">✓ sesión válida → la página continúa · ✗ sin sesión → 303 a /login</text>
+<rect x="576" y="596" width="140" height="24" rx="12" fill="#2eaa6e"/>
+<text x="646" y="612" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">SERVIDOR</text>
+<line x1="52" y1="645" x2="52" y2="669" stroke="#8a97a8" stroke-width="2" marker-end="url(#flecha)"/>
+<rect x="20" y="674" width="720" height="64" rx="12" fill="#f3f0fb" stroke="#ddd3f2"/>
+<circle cx="52" cy="706" r="18" fill="#7a5fd0"/>
+<text x="52" y="712" text-anchor="middle" font-size="17" font-weight="700" fill="#ffffff">7</text>
+<text x="84" y="702" font-size="14" font-weight="700" fill="#25384d">«Cerrar sesión»: se borra la libreta y se rompe el carnet</text>
+<text x="84" y="723" font-size="12" fill="#5c6f86">logout (rutas.py) → cerrar_sesion() + delete_cookie()</text>
+<rect x="576" y="694" width="140" height="24" rx="12" fill="#7a5fd0"/>
+<text x="646" y="710" text-anchor="middle" font-size="10.5" font-weight="700" fill="#ffffff">AMBOS</text>
+<rect x="20" y="762" width="720" height="56" rx="12" fill="#fff8e1" stroke="#f0dfa8"/>
+<text x="40" y="786" font-size="12" font-weight="700" fill="#7a5d00">La cookie es el CARNET (vive en el navegador); «sesiones» es la LIBRETA (vive en el servidor).</text>
+<text x="40" y="806" font-size="11" fill="#8a6d00">HTTP no tiene memoria: la pareja carnet + libreta es el truco para que el servidor sepa quién eres en cada petición.</text>
+</svg>

@@ -1,0 +1,17 @@
+{#
+  perfil.html — página 1 del menú. Privada: solo con sesión.
+  Muestra los datos del usuario conectado (vienen del objeto Usuario).
+#}
+{% extends "base.html" %}
+
+{% block titulo %}Mi perfil{% endblock %}
+
+{% block contenido %}
+<h1>Mi perfil</h1>
+
+<table class="tarjeta">
+    <tr><th>Usuario</th>       <td>{{ usuario.username }}</td></tr>
+    <tr><th>Nombre completo</th> <td>{{ usuario.nombre_completo }}</td></tr>
+    <tr><th>Email</th>         <td>{{ usuario.email }}</td></tr>
+</table>
+{% endblock %}

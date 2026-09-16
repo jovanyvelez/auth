@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+{#
+  base.html — la PLANTILLA MADRE.
+  Define la estructura común de todas las páginas (cabecera, menú, estilos).
+  Las demás plantillas "extienden" esta y rellenan el bloque `contenido`.
+
+  Etiquetas Jinja2 que aparecen aquí:
+  - {% extends %}  -> (en las hijas) "copio toda esta página como base"
+  - {% block %}    -> hueco que cada página puede rellenar
+  - {% if %}       -> solo se muestra si la condición es verdadera
+  - {{ }}          -> imprime el valor de una variable
+#}
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block titulo %}Login simple{% endblock %}</title>
+    <style>
+        /* Estilo mínimo: nada de frameworks, solo lo justo para verse bien. */
+        body { font-family: system-ui, sans-serif; max-width: 640px;
+               margin: 2rem auto; padding: 0 1rem; color: #222; }
+        nav  { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap;
+               border-bottom: 2px solid #4a90d9; padding-bottom: .5rem; }
+        nav a { text-decoration: none; color: #4a90d9; font-weight: 600; }
+        nav .usuario { margin-left: auto; color: #666; }
+        h1 { color: #4a90d9; }
+        .tarjeta { background: #f4f7fb; border: 1px solid #d5e2f0;
+                   border-radius: 8px; padding: 1rem; }
+        .error   { color: #c0392b; font-weight: 600; }
+        table    { border-collapse: collapse; }
+        th, td   { border: 1px solid #d5e2f0; padding: .4rem .8rem; text-align: left; }
+        ul       { line-height: 1.8; }
+    </style>
+</head>
+<body>
+    {# El menú solo aparece si nos pasan un `usuario` (páginas privadas).
+       En el login no hay usuario conectado, así que no se pinta. #}
+    {% if usuario %}
+    <nav>
+        <a href="/">Inicio</a>
+        <a href="/perfil">Mi perfil</a>
+        <a href="/objetos">Mis objetos</a>
+        <a href="/logout">Cerrar sesión</a>
+        <span class="usuario">Hola, {{ usuario.nombre_completo }}</span>
+    </nav>
+    {% endif %}
+
+    <main>
+        {# Cada página escribe aquí su contenido. #}
+        {% block contenido %}{% endblock %}
+    </main>
+</body>
+</html>

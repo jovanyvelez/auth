@@ -1,0 +1,24 @@
+{#
+  objetos.html — página 2 del menú. Privada: solo con sesión.
+  Muestra la lista de objetos del usuario conectado.
+
+  {% for %} repite el bloque por cada elemento de la lista `objetos`
+  que la ruta ha pasado en el contexto.
+#}
+{% extends "base.html" %}
+
+{% block titulo %}Mis objetos{% endblock %}
+
+{% block contenido %}
+<h1>Mis objetos</h1>
+
+{% if objetos %}
+<ul class="tarjeta">
+    {% for objeto in objetos %}
+    <li>{{ objeto }}</li>
+    {% endfor %}
+</ul>
+{% else %}
+<p class="tarjeta">No tienes objetos todavía.</p>
+{% endif %}
+{% endblock %}
